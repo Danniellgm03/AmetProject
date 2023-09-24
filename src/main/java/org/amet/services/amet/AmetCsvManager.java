@@ -2,7 +2,10 @@ package org.amet.services.amet;
 
 
 
+import org.amet.controllers.AmetController;
 import org.amet.models.Amet;
+import org.amet.repositories.amets.AmetRepositoryImpl;
+import org.amet.services.database.DataBaseManager;
 import org.amet.utils.AmetUtils;
 
 import java.io.IOException;
@@ -56,6 +59,14 @@ public class AmetCsvManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void insertAllMediciones(){
+        AmetController controller = new AmetController(new AmetRepositoryImpl(DataBaseManager.getInstance()));
+        for(Amet medicion : this.mediciones){
+            controller.insertMedicion(medicion);
+        }
+
     }
 
 
