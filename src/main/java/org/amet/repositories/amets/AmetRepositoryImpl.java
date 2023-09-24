@@ -19,7 +19,7 @@ public class AmetRepositoryImpl implements AmetRepository {
     @Override
     public List<Amet> findAll() throws SQLException {
         dataBaseManager.openConnection();
-        String sql = "SELECT * FROM Mediciones";
+        String sql = "SELECT * FROM mediciones";
         var result = dataBaseManager.select(sql).orElseThrow(() -> new SQLException("Error al obtener todas las mediciones"));
 
         List<Amet> mediciones = new ArrayList<>();
@@ -46,7 +46,7 @@ public class AmetRepositoryImpl implements AmetRepository {
     @Override
     public Amet findById(Integer id) throws SQLException {
         dataBaseManager.openConnection();
-        String sql = "SELECT * FROM Mediciones WHERE ID = ?";
+        String sql = "SELECT * FROM mediciones WHERE ID = ?";
         var result = dataBaseManager.select(sql, id).orElseThrow(() -> new SQLException("Error al obtener la medicion por id"));
         result.next();
         Amet medicion = Amet.builder()
@@ -66,7 +66,7 @@ public class AmetRepositoryImpl implements AmetRepository {
 
     @Override
     public Amet insert(Amet medicion) throws SQLException {
-        String sql = "INSERT INTO Mediciones VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO mediciones VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
         dataBaseManager.openConnection();
 
         dataBaseManager.insert(sql,
