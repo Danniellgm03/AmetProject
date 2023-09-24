@@ -1,4 +1,4 @@
-package org.amet.services;
+package org.amet.services.amet;
 
 
 
