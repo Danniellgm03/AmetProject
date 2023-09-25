@@ -20,6 +20,8 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
     implementation("org.xerial:sqlite-jdbc:3.43.0.0")
     implementation("org.mybatis:mybatis:3.5.13")
+
+    implementation("org.json:json:20230618")
 }
 
 tasks.test {
