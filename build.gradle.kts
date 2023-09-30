@@ -21,7 +21,7 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.43.0.0")
     implementation("org.mybatis:mybatis:3.5.13")
 
-    implementation("org.json:json:20230618")
+    implementation("com.google.code.gson:gson:2.10.1")
 }
 
 tasks.test {

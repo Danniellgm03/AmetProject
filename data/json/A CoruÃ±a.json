@@ -1,0 +1,472 @@
+[
+  {
+    "localidad": "As Pontes",
+    "provincia": "A Coruña",
+    "temp_max": 18.1,
+    "hour_temp_max": "12:00",
+    "temp_min": 7.9,
+    "hour_temp_min": "12:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "A Coruña",
+    "provincia": "A Coruña",
+    "temp_max": 19.7,
+    "hour_temp_max": "13:10",
+    "temp_min": 12.7,
+    "hour_temp_min": "13:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "A Coruña Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 20.2,
+    "hour_temp_max": "14:30",
+    "temp_min": 6.7,
+    "hour_temp_min": "14:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Carballo, Depuradora",
+    "provincia": "A Coruña",
+    "temp_max": 19.0,
+    "hour_temp_max": "14:10",
+    "temp_min": 4.6,
+    "hour_temp_min": "14:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Cabo Vilan",
+    "provincia": "A Coruña",
+    "temp_max": 16.3,
+    "hour_temp_max": "13:10",
+    "temp_min": 13.9,
+    "hour_temp_min": "13:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Vimianzo",
+    "provincia": "A Coruña",
+    "temp_max": 17.7,
+    "hour_temp_max": "13:40",
+    "temp_min": 11.4,
+    "hour_temp_min": "13:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Fisterra",
+    "provincia": "A Coruña",
+    "temp_max": 20.6,
+    "hour_temp_max": "02:10",
+    "temp_min": 13.2,
+    "hour_temp_min": "02:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Mazaricos",
+    "provincia": "A Coruña",
+    "temp_max": 17.9,
+    "hour_temp_max": "12:50",
+    "temp_min": 10.1,
+    "hour_temp_min": "12:50",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Sobrado",
+    "provincia": "A Coruña",
+    "temp_max": 17.5,
+    "hour_temp_max": "13:40",
+    "temp_min": 9.1,
+    "hour_temp_min": "13:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Santiago de Compostela Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 19.7,
+    "hour_temp_max": "15:20",
+    "temp_min": 9.2,
+    "hour_temp_min": "15:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Noia",
+    "provincia": "A Coruña",
+    "temp_max": 21.7,
+    "hour_temp_max": "13:30",
+    "temp_min": 13.1,
+    "hour_temp_min": "13:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Boiro",
+    "provincia": "A Coruña",
+    "temp_max": 23.0,
+    "hour_temp_max": "15:40",
+    "temp_min": 13.4,
+    "hour_temp_min": "15:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Padrón",
+    "provincia": "A Coruña",
+    "temp_max": 23.0,
+    "hour_temp_max": "15:20",
+    "temp_min": 9.9,
+    "hour_temp_min": "15:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Santiago de Compostela",
+    "provincia": "A Coruña",
+    "temp_max": 21.1,
+    "hour_temp_max": "15:30",
+    "temp_min": 10.9,
+    "hour_temp_min": "15:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Rois, Casas do Porto",
+    "provincia": "A Coruña",
+    "temp_max": 20.3,
+    "hour_temp_max": "16:00",
+    "temp_min": 11.5,
+    "hour_temp_min": "16:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-30"
+  },
+  {
+    "localidad": "Estaca de Bares",
+    "provincia": "A Coruña",
+    "temp_max": 15.5,
+    "hour_temp_max": "13:10",
+    "temp_min": 13.0,
+    "hour_temp_min": "21:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "As Pontes",
+    "provincia": "A Coruña",
+    "temp_max": 20.3,
+    "hour_temp_max": "14:50",
+    "temp_min": 7.0,
+    "hour_temp_min": "07:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "A Coruña",
+    "provincia": "A Coruña",
+    "temp_max": 20.6,
+    "hour_temp_max": "14:10",
+    "temp_min": 11.1,
+    "hour_temp_min": "08:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "A Coruña Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 21.5,
+    "hour_temp_max": "15:10",
+    "temp_min": 6.0,
+    "hour_temp_min": "08:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Carballo, Depuradora",
+    "provincia": "A Coruña",
+    "temp_max": 22.2,
+    "hour_temp_max": "16:20",
+    "temp_min": 2.5,
+    "hour_temp_min": "07:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Cabo Vilan",
+    "provincia": "A Coruña",
+    "temp_max": 17.9,
+    "hour_temp_max": "12:30",
+    "temp_min": 9.9,
+    "hour_temp_min": "08:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Vimianzo",
+    "provincia": "A Coruña",
+    "temp_max": 19.5,
+    "hour_temp_max": "15:40",
+    "temp_min": 8.7,
+    "hour_temp_min": "05:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Fisterra",
+    "provincia": "A Coruña",
+    "temp_max": 20.4,
+    "hour_temp_max": "13:40",
+    "temp_min": 12.5,
+    "hour_temp_min": "02:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Mazaricos",
+    "provincia": "A Coruña",
+    "temp_max": 18.7,
+    "hour_temp_max": "14:40",
+    "temp_min": 7.4,
+    "hour_temp_min": "08:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Sobrado",
+    "provincia": "A Coruña",
+    "temp_max": 18.1,
+    "hour_temp_max": "14:50",
+    "temp_min": 4.6,
+    "hour_temp_min": "03:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Santiago de Compostela Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 19.6,
+    "hour_temp_max": "16:00",
+    "temp_min": 7.0,
+    "hour_temp_min": "08:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Noia",
+    "provincia": "A Coruña",
+    "temp_max": 20.3,
+    "hour_temp_max": "15:10",
+    "temp_min": 10.1,
+    "hour_temp_min": "08:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Boiro",
+    "provincia": "A Coruña",
+    "temp_max": 21.9,
+    "hour_temp_max": "16:20",
+    "temp_min": 7.9,
+    "hour_temp_min": "08:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Padrón",
+    "provincia": "A Coruña",
+    "temp_max": 21.6,
+    "hour_temp_max": "16:10",
+    "temp_min": 7.0,
+    "hour_temp_min": "07:50",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Santiago de Compostela",
+    "provincia": "A Coruña",
+    "temp_max": 21.4,
+    "hour_temp_max": "16:20",
+    "temp_min": 8.2,
+    "hour_temp_min": "08:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Rois, Casas do Porto",
+    "provincia": "A Coruña",
+    "temp_max": 20.7,
+    "hour_temp_max": "16:10",
+    "temp_min": 9.4,
+    "hour_temp_min": "07:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-31"
+  },
+  {
+    "localidad": "Estaca de Bares",
+    "provincia": "A Coruña",
+    "temp_max": 16.9,
+    "hour_temp_max": "14:40",
+    "temp_min": 15.2,
+    "hour_temp_min": "14:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "As Pontes",
+    "provincia": "A Coruña",
+    "temp_max": 18.1,
+    "hour_temp_max": "12:00",
+    "temp_min": 7.9,
+    "hour_temp_min": "12:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "A Coruña",
+    "provincia": "A Coruña",
+    "temp_max": 19.7,
+    "hour_temp_max": "13:10",
+    "temp_min": 12.7,
+    "hour_temp_min": "13:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "A Coruña Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 20.2,
+    "hour_temp_max": "14:30",
+    "temp_min": 6.7,
+    "hour_temp_min": "14:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Carballo, Depuradora",
+    "provincia": "A Coruña",
+    "temp_max": 19.0,
+    "hour_temp_max": "14:10",
+    "temp_min": 4.6,
+    "hour_temp_min": "14:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Cabo Vilan",
+    "provincia": "A Coruña",
+    "temp_max": 16.3,
+    "hour_temp_max": "13:10",
+    "temp_min": 13.9,
+    "hour_temp_min": "13:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Vimianzo",
+    "provincia": "A Coruña",
+    "temp_max": 17.7,
+    "hour_temp_max": "13:40",
+    "temp_min": 11.4,
+    "hour_temp_min": "13:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Fisterra",
+    "provincia": "A Coruña",
+    "temp_max": 20.6,
+    "hour_temp_max": "02:10",
+    "temp_min": 13.2,
+    "hour_temp_min": "02:10",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Mazaricos",
+    "provincia": "A Coruña",
+    "temp_max": 17.9,
+    "hour_temp_max": "12:50",
+    "temp_min": 10.1,
+    "hour_temp_min": "12:50",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Sobrado",
+    "provincia": "A Coruña",
+    "temp_max": 17.5,
+    "hour_temp_max": "13:40",
+    "temp_min": 9.1,
+    "hour_temp_min": "13:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Santiago de Compostela Aeropuerto",
+    "provincia": "A Coruña",
+    "temp_max": 19.7,
+    "hour_temp_max": "15:20",
+    "temp_min": 9.2,
+    "hour_temp_min": "15:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Noia",
+    "provincia": "A Coruña",
+    "temp_max": 21.7,
+    "hour_temp_max": "13:30",
+    "temp_min": 13.1,
+    "hour_temp_min": "13:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Boiro",
+    "provincia": "A Coruña",
+    "temp_max": 23.0,
+    "hour_temp_max": "15:40",
+    "temp_min": 13.4,
+    "hour_temp_min": "15:40",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Padrón",
+    "provincia": "A Coruña",
+    "temp_max": 23.0,
+    "hour_temp_max": "15:20",
+    "temp_min": 9.9,
+    "hour_temp_min": "15:20",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Santiago de Compostela",
+    "provincia": "A Coruña",
+    "temp_max": 21.1,
+    "hour_temp_max": "15:30",
+    "temp_min": 10.9,
+    "hour_temp_min": "15:30",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  },
+  {
+    "localidad": "Rois, Casas do Porto",
+    "provincia": "A Coruña",
+    "temp_max": 20.3,
+    "hour_temp_max": "16:00",
+    "temp_min": 11.5,
+    "hour_temp_min": "16:00",
+    "precipitacion": 0.0,
+    "dia": "2017-10-29"
+  }
+]

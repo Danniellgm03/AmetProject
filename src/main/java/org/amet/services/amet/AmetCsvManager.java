@@ -18,14 +18,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * Clase encargada de leer los archivos csv y guardarlos en la base de datos
+ * @see Amet
+ * @author Daniel y Diego
+ */
 public class AmetCsvManager {
 
-    private List<Amet> mediciones = new ArrayList<>();
+    /**
+     * Lista de mediciones
+     * @see Amet
+     * @see List
+     * @see ArrayList
+     */
+    private final List<Amet> mediciones = new ArrayList<>();
+
+    /**
+     * Lee un archivo csv
+     * @param route_file ruta del archivo csv
+     * @return List Lista de mediciones
+     */
     public List<Amet> readAllCSV(String route_file){
         LocalDate dia = AmetUtils.getDayOfNameFile(route_file);
-        System.out.println(dia);
         try {
-            List<String> lines =  Files.newBufferedReader(Paths.get(route_file), StandardCharsets.ISO_8859_1 ).lines().toList();
+            List<String> lines =  Files.newBufferedReader(Paths.get(route_file), StandardCharsets.UTF_8 ).lines().toList();
 
             for (String line : lines) {
                 String[] data = line.split(";");
@@ -61,6 +77,13 @@ public class AmetCsvManager {
         }
     }
 
+    /**
+     * Inserta todas las mediciones leidas en la base de datos
+     * @see AmetController
+     * @see AmetRepositoryImpl
+     * @see DataBaseManager
+     * @see Amet
+     */
     public void insertAllMediciones(){
         AmetController controller = new AmetController(new AmetRepositoryImpl(DataBaseManager.getInstance()));
         for(Amet medicion : this.mediciones){

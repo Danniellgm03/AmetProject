@@ -1,13 +1,11 @@
 package org.amet;
 
-import netscape.javascript.JSObject;
 import org.amet.controllers.AmetController;
 import org.amet.models.Amet;
 import org.amet.repositories.amets.AmetRepositoryImpl;
 import org.amet.services.amet.AmetCsvManager;
 import org.amet.services.database.DataBaseManager;
-import org.json.JSONObject;
-
+import org.amet.utils.files.JsonFileAmet;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
@@ -16,27 +14,113 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+/**
+ * Clase principal del proyecto
+ * @version 1.0
+ * @author Daniel y Diego
+ */
 public class Main {
+
+    /**
+     * Método que muestra los datos de una provincia
+     * @param nombre_provincia Nombre de la provincia
+     * @param mediciones Lista de mediciones
+     */
+    public static void datosByProvincia(String nombre_provincia, List<Amet> mediciones){
+        System.out.println("Datos de las provincia de "+nombre_provincia+" (debe funcionar para cualquier provincia)");
+        var groupingby_provincia = mediciones.stream()
+                .filter((x) -> x.getProvincia().equals(nombre_provincia))
+                .collect(Collectors.groupingBy(
+                        (x) -> x.getDia().toString(),
+                        Collectors.toList()
+                ));
+
+        System.out.println();
+
+        var maximo_groupingby = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .max(Comparator.comparingDouble(Amet::getTemp_max))
+                ));
+        System.out.println(maximo_groupingby);
+        System.out.println();
+
+
+        var minimo_groypinby = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .min(Comparator.comparingDouble(Amet::getTemp_min))
+                ));
+        System.out.println(minimo_groypinby);
+        System.out.println();
+
+        var media_max_temp = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .collect(Collectors.averagingDouble(Amet::getTemp_max))
+                ));
+        System.out.println(media_max_temp);
+        System.out.println();
+
+        var media_min_temp = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .collect(Collectors.averagingDouble(Amet::getTemp_min))
+                ));
+        System.out.println(media_min_temp);
+        System.out.println();
+
+        var maximo_groupingby_precipitacion = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .max(Comparator.comparingDouble(Amet::getPrecipitacion))
+                ));
+        System.out.println(maximo_groupingby_precipitacion);
+        System.out.println();
+
+        var media_precipitacion = groupingby_provincia.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream()
+                                .collect(Collectors.averagingDouble(Amet::getPrecipitacion))
+                ));
+        System.out.println(media_precipitacion);
+        System.out.println();
+    }
+
+    /**
+     * Método principal
+     * @param args Argumentos
+     */
     public static void main(String[] args) {
 
         try {
-            DataBaseManager.getInstance().initData( ClassLoader.getSystemResource("init.sql").getFile().toString(), false);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
+            DataBaseManager.getInstance().initData(ClassLoader.getSystemResource("init.sql").getFile(), false);
+        } catch (FileNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 
         Path ruta = Paths.get("");
-        String ruta_absoluta = ruta.toAbsolutePath().toString() + File.separator + "data" ;
-        String ruta_file = ruta_absoluta + File.separator + "Aemet20171030.csv";
+        String ruta_absoluta = ruta.toAbsolutePath().toString() + File.separator + "data";
+
         AmetCsvManager managerAmet = new AmetCsvManager();
-        List<Amet> amets = managerAmet.readAllCSV(ruta_file);
+
+        String[] files = {"UTF8Aemet20171030.csv", "UTF8Aemet20171031.csv", "UTF8Aemet20171029.csv"};
+        for (String file: files) {
+            String ruta_file = ruta_absoluta + File.separator + file ;
+            managerAmet.readAllCSV(ruta_file);
+        }
+
         managerAmet.insertAllMediciones();
         AmetController ametController = new AmetController(new AmetRepositoryImpl(DataBaseManager.getInstance()));
         List<Amet> mediciones = ametController.findAll();
+        System.out.println(mediciones);
+
 
         System.out.println("¿Dónde se dio la temperatura máxima y mínima total en cada uno de los días?.");
         Map<String, List<Amet>> separed_by_day= mediciones.stream()
@@ -44,14 +128,13 @@ public class Main {
                         (a) -> a.getDia().toString(),
                         Collectors.toList()
                 ));
-
         separed_by_day.entrySet().stream()
                 .map((value) -> value.getValue().stream().max(Comparator.comparingDouble(Amet::getTemp_max)))
-                .toList().forEach((elem) -> System.out.println("El maximo del dia : " + elem.get().getDia() + " es " + elem.get().toString()));
+                .toList().forEach((elem) -> System.out.println("El maximo del dia : " + elem.get().getDia() + " es " + elem.get().getTemp_max()));
 
         separed_by_day.entrySet().stream()
                 .map((value) -> value.getValue().stream().min(Comparator.comparingDouble(Amet::getTemp_min)))
-                .toList().forEach((elem) -> System.out.println("El minimo del dia : " + elem.get().getDia() + " es " + elem.get().toString()));
+                .toList().forEach((elem) -> System.out.println("El minimo del dia : " + elem.get().getDia() + " es " + elem.get().getTemp_min()));
         System.out.println();
 
         System.out.println("Máxima temperatura agrupado por provincias y día.");
@@ -60,22 +143,30 @@ public class Main {
                         (a) -> a.getDia().toString(),
                         Collectors.groupingBy(
                                 Amet::getProvincia,
-                                Collectors.maxBy(Comparator.comparingDouble(Amet::getTemp_max))
+                                Collectors.collectingAndThen(
+                                        Collectors.maxBy(Comparator.comparingDouble(Amet::getTemp_max)),
+                                        (a) -> a.map(Amet::getTemp_max).orElse(null)
+                                )
                         )
 
                 ));
+        System.out.println(max_per_dayAndProvincia);
         System.out.println();
 
-        System.out.println("Mínima temperatura agrupado por provincias y día.");
+       System.out.println("Mínima temperatura agrupado por provincias y día.");
         var min_per_dayAndProvincia = mediciones.stream()
                 .collect(Collectors.groupingBy(
                         (a) -> a.getDia().toString(),
                         Collectors.groupingBy(
                                 Amet::getProvincia,
-                                Collectors.minBy(Comparator.comparingDouble(Amet::getTemp_min))
+                                Collectors.collectingAndThen(
+                                        Collectors.minBy(Comparator.comparingDouble(Amet::getTemp_min)),
+                                        (a) -> a.map(Amet::getTemp_min).orElse(null)
+                                )
                         )
 
                 ));
+        System.out.println(min_per_dayAndProvincia);
         System.out.println();
 
         System.out.println("Medía de temperatura agrupado por provincias y día.");
@@ -88,6 +179,7 @@ public class Main {
                         )
 
                 ));
+        System.out.println(avg_per_dayAndProvincia);
         System.out.println();
 
         System.out.println("Precipitación máxima por días y dónde se dio");
@@ -96,6 +188,7 @@ public class Main {
                         (a) -> a.getDia().toString(),
                         Collectors.maxBy(Comparator.comparingDouble(Amet::getPrecipitacion))
                 ));
+        System.out.println(precipitacion_max_perDay);
         System.out.println();
 
         System.out.println("Precipitación media por provincias y día.");
@@ -107,6 +200,7 @@ public class Main {
                                 Collectors.averagingDouble(Amet::getPrecipitacion)
                         )
                 ));
+        System.out.println(precipitacion_avg_perDay_Provincia);
         System.out.println();
 
 
@@ -116,109 +210,31 @@ public class Main {
                         Amet::getProvincia,
                         Collectors.groupingBy(
                                 (x) -> x.getDia().toString(),
-                                Collectors.filtering((x) -> x.getPrecipitacion() > 0, Collectors.toList())
+                                Collectors.filtering((x) -> x.getPrecipitacion() > 0, Collectors.collectingAndThen(
+                                        Collectors.toList(),
+                                        (x) -> x.stream().map(Amet::getLocalidad).toList()
+                                ))
                         )
                 ));
+        System.out.println(lugarllovido_groupby_provincias_dia);
         System.out.println();
 
         System.out.println("Lugar donde más ha llovido.");
         var lugar_donde_mas_llovido = mediciones.stream()
                 .max(Comparator.comparingDouble(Amet::getPrecipitacion));
+        System.out.println(lugar_donde_mas_llovido);
         System.out.println();
 
 
-        System.out.println("Datos de las provincia de Madrid (debe funcionar para cualquier provincia)");
-        var groupingby_provincia = mediciones.stream()
-                .filter((x) -> x.getProvincia().equals("Madrid"))
-                .collect(Collectors.groupingBy(
-                        (x) -> x.getDia().toString(),
-                        Collectors.toList()
-                ));
 
-        System.out.println(groupingby_provincia);
-        var maximo_groupingby = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .max(Comparator.comparingDouble(Amet::getTemp_max))
-                ));
+        datosByProvincia("A Coruña", mediciones);
+        try {
+            JsonFileAmet.exportJsonAmetProvincia("A Coruña", mediciones, ruta_absoluta);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-        var minimo_groypinby = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .min(Comparator.comparingDouble(Amet::getTemp_min))
-                ));
-
-        var media_max_temp = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .collect(Collectors.averagingDouble(Amet::getTemp_max))
-                ));
-
-        var media_min_temp = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .collect(Collectors.averagingDouble(Amet::getTemp_min))
-                ));
-
-        var maximo_groupingby_precipitacion = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .max(Comparator.comparingDouble(Amet::getPrecipitacion))
-                ));
-        System.out.println(maximo_groupingby_precipitacion);
-
-        var media_precipitacion = groupingby_provincia.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .collect(Collectors.averagingDouble(Amet::getPrecipitacion))
-                ));
-
-
-        JSONObject json = new JSONObject();
-        json.put("provincia", "Madrid");
-        JSONObject json_max_temps = new JSONObject();
-        json_max_temps.put("temp_max", maximo_groupingby.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getTemp_max());
-        json_max_temps.put("localidad",  maximo_groupingby.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getLocalidad());
-        json.put("temperatura_maxima", json_max_temps);
-
-        JSONObject json_min_temps = new JSONObject();
-        json_min_temps.put("temp_min", minimo_groypinby.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getTemp_min());
-        json_min_temps.put("localidad",  minimo_groypinby.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getLocalidad());
-        json.put("temperatura_minima", json_min_temps);
-        json.put("avg_temp_max", media_max_temp.values());
-        json.put("avg_temp_min", media_min_temp.values());
-
-        JSONObject json_precipitacion = new JSONObject();
-        json_precipitacion.put("max_precipitacion", maximo_groupingby_precipitacion.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getPrecipitacion());
-        json_precipitacion.put("localidad", maximo_groupingby_precipitacion.values().stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .max(Comparator.comparingDouble(Amet::getTemp_max)).get().getLocalidad());
-
-        json.put("precipitacion_estadisticas", json_precipitacion);
-        json.put("avg_precipitacion", media_precipitacion.values());
-        System.out.println(json.toString());
 
     }
 }
+
