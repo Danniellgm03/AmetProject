@@ -43,6 +43,33 @@ public class AmetRepositoryImpl implements AmetRepository {
         return mediciones;
     }
 
+    public List<Amet> findByProvincia(String provincia) throws SQLException{
+        dataBaseManager.openConnection();
+        String sql = "SELECT * FROM mediciones WHERE provincia = ?";
+        var result = dataBaseManager.select(sql, provincia).orElseThrow(() -> new SQLException("Error al obtener la medicion por provincia"));
+
+        List<Amet> mediciones = new ArrayList<>();
+
+        while (result.next()){
+            Amet medicion = Amet.builder()
+                    .localidad(result.getString("localidad"))
+                    .provincia(result.getString("provincia"))
+                    .temp_max(result.getDouble("temp_max"))
+                    .hour_temp_max(LocalTime.parse(result.getString("hour_temp_max")))
+                    .temp_min(result.getDouble("temp_min"))
+                    .hour_temp_min(LocalTime.parse(result.getString("hour_temp_min")))
+                    .precipitacion(result.getDouble("precipitacion"))
+                    .dia(LocalDate.parse(result.getString("dia")))
+                    .build();
+
+            mediciones.add(medicion);
+        }
+
+        dataBaseManager.closeConnection();
+        return mediciones;
+    }
+
+
     @Override
     public Amet findById(Integer id) throws SQLException {
         dataBaseManager.openConnection();
@@ -68,7 +95,6 @@ public class AmetRepositoryImpl implements AmetRepository {
     public Amet insert(Amet medicion) throws SQLException {
         String sql = "INSERT INTO mediciones VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?)";
         dataBaseManager.openConnection();
-
         dataBaseManager.insert(sql,
                 medicion.getLocalidad(),
                 medicion.getProvincia(),

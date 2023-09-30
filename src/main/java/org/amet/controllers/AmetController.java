@@ -42,4 +42,13 @@ public class AmetController {
         }
     }
 
+    public List<Amet> findByProvincia(String provincia){
+        try {
+            return ametRepository.findByProvincia(provincia);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
