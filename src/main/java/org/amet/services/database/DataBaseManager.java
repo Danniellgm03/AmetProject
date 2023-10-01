@@ -97,18 +97,17 @@ public class DataBaseManager {
      * @see RuntimeException
      */
     public void initConfig() {
-        String propertiesFile = ClassLoader.getSystemResource("config.properties").getFile();
+        InputStream propertiesFile = ClassLoader.getSystemResourceAsStream("config.properties");
         Properties prop = new Properties();
 
         try{
-            prop.load(new FileInputStream(propertiesFile));
+            prop.load(propertiesFile);
 
             url = prop.getProperty("database.url");
             port = prop.getProperty("database.port");
             name = prop.getProperty("database.name");
             connectionUrl = prop.getProperty("database.connectionUrl");
             driver = prop.getProperty("database.driver");
-            //initDataBase = prop.getProperty("database.initDatabase");
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -182,14 +181,13 @@ public class DataBaseManager {
      * @return ResultSet Resultado de la consulta
      * @throws SQLException Error al ejecutar la consulta insert
      */
-    public Optional<ResultSet> insert(String insertSQL, Object... params) throws SQLException {
+    public void insert(String insertSQL, Object... params) throws SQLException {
 
         preparedStatement = conn.prepareStatement(insertSQL, preparedStatement.RETURN_GENERATED_KEYS);
         for (int i = 0; i < params.length; i++) {
             preparedStatement.setObject(i + 1, params[i]);
         }
         preparedStatement.executeUpdate();
-        return Optional.of(preparedStatement.getGeneratedKeys());
     }
 
 
