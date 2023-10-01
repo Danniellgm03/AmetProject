@@ -24,6 +24,12 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 }
 
+tasks.jar{
+    manifest {
+        attributes["Main-Class"] = "org.amet.Main"
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
