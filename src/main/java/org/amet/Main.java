@@ -119,7 +119,7 @@ public class Main {
         managerAmet.insertAllMediciones();
         AmetController ametController = new AmetController(new AmetRepositoryImpl(DataBaseManager.getInstance()));
         List<Amet> mediciones = ametController.findAll();
-        System.out.println(mediciones);
+        //System.out.println(mediciones);
 
 
         System.out.println("¿Dónde se dio la temperatura máxima y mínima total en cada uno de los días?.");
